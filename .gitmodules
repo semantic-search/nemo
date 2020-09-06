@@ -1,0 +1,7 @@
+    [submodule "db_models"]
+	path = quartznet/db_models
+	url = https://github.com/semantic-search/db_models
+
+	[submodule "db_models"]
+	path = jasper/db_models
+	url = https://github.com/semantic-search/db_models

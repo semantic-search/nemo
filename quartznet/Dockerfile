@@ -12,12 +12,10 @@ RUN wget --content-disposition https://api.ngc.nvidia.com/v2/models/nvidia/multi
 RUN wget  --content-disposition https://api.ngc.nvidia.com/v2/models/nvidia/wsj_lm_decoder/versions/1/zip -O wsj_lm_decoder_1.zip
 RUN unzip multidataset_quartznet15x5_2.zip
 RUN unzip wsj_lm_decoder_1.zip
-RUN pip install fastapi[all]
-RUN pip install nemo_toolkit[all]
 RUN git clone -q --depth 1 https://github.com/NVIDIA/apex && cd apex && pip install -q --no-cache-dir ./
 RUN rm multidataset_jasper10x5dr_5.zip
 RUN rm wsj_lm_decoder_1.zip
 RUN rm Overview.md
-COPY main.py .
-COPY stt.py .
-CMD uvicorn main:app --reload --host 0.0.0.0 --port 7000
+COPY . .
+RUN pip install -r requirements.txt
+CMD ["python", "main.py"]
